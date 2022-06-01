@@ -9,7 +9,7 @@ create table igrac(
     ime             varchar (50) not null,
     prezime         varchar (50) not null,
     email           varchar (50),
-    datum_rodenja   datetime,
+    datum_rodenja   date,
     pozicija        varchar (20),
     klub            int not null
 );
@@ -19,7 +19,7 @@ create table trener(
     ime             varchar (50) not null,
     prezime         varchar (50) not null,
     email           varchar (50),
-    datum_rodenja   datetime,
+    datum_rodenja   date,
     klub            int not null
 );
 
@@ -36,6 +36,7 @@ create table klub(
     sifra               int not null primary key auto_increment,
     naziv               varchar (40) not null,
     igrac               int,
+    trener              int not null,
     godina_osnutka      int,
     vlasnik             varchar (50),
     liga                varchar (40),
@@ -47,7 +48,7 @@ create table klub(
 # definiranje vanjskih ključeva
 
 alter table klub add foreign key (igrac) references igrac (sifra);
-alter table trener add foreign key (klub) references klub (sifra);
+alter table klub add foreign key (trener) references trener (sifra);
 alter table klub add foreign key (stadion) references stadion (sifra);
 
 # unos podataka
@@ -56,61 +57,59 @@ insert into stadion (sifra,naziv,klub,godina_izgradnje,
 kapacitet,mjesto)
 values (1,'Etihad stadium',1,2002,55000,'Manchester');
 
-insert into klub (sifra,naziv,igrac,godina_osnutka,
+insert into klub (sifra,naziv,igrac,trener,godina_osnutka,
 vlasnik,liga,sponzor,vrijednost_kluba,stadion)
-values (1,'Manchester City',null,1880,
+values (1,'Manchester City',1,1,1880,
 'City Football Group','Premier league','Puma',1200000000,1);
 
-update klub set igrac=1 where sifra=1;
-
-insert into klub (sifra,naziv,igrac,godina_osnutka,
+insert into klub (sifra,naziv,igrac,trener,godina_osnutka,
 vlasnik,liga,sponzor,vrijednost_kluba,stadion)
-values (2,'Manchester City',2,1880,
+values (2,'Manchester City',2,1,1880,
 'City Football Group','Premier league','Puma',1200000000,1);
 
-insert into klub (sifra,naziv,igrac,godina_osnutka,
+insert into klub (sifra,naziv,igrac,trener,godina_osnutka,
 vlasnik,liga,sponzor,vrijednost_kluba,stadion)
-values (3,'Manchester City',3,1880,
+values (3,'Manchester City',3,1,1880,
 'City Football Group','Premier league','Puma',1200000000,1);
 
-insert into klub (sifra,naziv,igrac,godina_osnutka,
+insert into klub (sifra,naziv,igrac,trener,godina_osnutka,
 vlasnik,liga,sponzor,vrijednost_kluba,stadion)
-values (4,'Manchester City',4,1880,
+values (4,'Manchester City',4,1,1880,
 'City Football Group','Premier league','Puma',1200000000,1);
 
-insert into klub (sifra,naziv,igrac,godina_osnutka,
+insert into klub (sifra,naziv,igrac,trener,godina_osnutka,
 vlasnik,liga,sponzor,vrijednost_kluba,stadion)
-values (5,'Manchester City',5,1880,
+values (5,'Manchester City',5,1,1880,
 'City Football Group','Premier league','Puma',1200000000,1);
 
-insert into klub (sifra,naziv,igrac,godina_osnutka,
+insert into klub (sifra,naziv,igrac,trener,godina_osnutka,
 vlasnik,liga,sponzor,vrijednost_kluba,stadion)
-values (6,'Manchester City',6,1880,
+values (6,'Manchester City',6,1,1880,
 'City Football Group','Premier league','Puma',1200000000,1);
 
-insert into klub (sifra,naziv,igrac,godina_osnutka,
+insert into klub (sifra,naziv,igrac,trener,godina_osnutka,
 vlasnik,liga,sponzor,vrijednost_kluba,stadion)
-values (7,'Manchester City',7,1880,
+values (7,'Manchester City',7,1,1880,
 'City Football Group','Premier league','Puma',1200000000,1);
 
-insert into klub (sifra,naziv,igrac,godina_osnutka,
+insert into klub (sifra,naziv,igrac,trener,godina_osnutka,
 vlasnik,liga,sponzor,vrijednost_kluba,stadion)
-values (8,'Manchester City',8,1880,
+values (8,'Manchester City',8,1,1880,
 'City Football Group','Premier league','Puma',1200000000,1);
 
-insert into klub (sifra,naziv,igrac,godina_osnutka,
+insert into klub (sifra,naziv,igrac,trener,godina_osnutka,
 vlasnik,liga,sponzor,vrijednost_kluba,stadion)
-values (9,'Manchester City',9,1880,
+values (9,'Manchester City',9,1,1880,
 'City Football Group','Premier league','Puma',1200000000,1);
 
-insert into klub (sifra,naziv,igrac,godina_osnutka,
+insert into klub (sifra,naziv,igrac,trener,godina_osnutka,
 vlasnik,liga,sponzor,vrijednost_kluba,stadion)
-values (10,'Manchester City',10,1880,
+values (10,'Manchester City',10,1,1880,
 'City Football Group','Premier league','Puma',1200000000,1);
 
-insert into klub (sifra,naziv,igrac,godina_osnutka,
+insert into klub (sifra,naziv,igrac,trener,godina_osnutka,
 vlasnik,liga,sponzor,vrijednost_kluba,stadion)
-values (11,'Manchester City',11,1880,
+values (11,'Manchester City',11,1,1880,
 'City Football Group','Premier league','Puma',1200000000,1);
 
 insert into igrac (sifra,ime,prezime,email,datum_rodenja,pozicija,klub)
